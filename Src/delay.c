@@ -5,6 +5,7 @@ uint64_t coreSystemTimeMilliseconds = 0;
 
 void(*systemTickFunc)(void);
 
+//Init System timer to implement delay function
 void DelayTimer_Init(void)
 {
 	RCC->APB1ENR |= RCC_APB1ENR_TIM2EN;
@@ -20,6 +21,7 @@ void DelayTimer_Init(void)
 
 extern uint64_t systemTimeStamp;
 
+//Timer 3 Interrupt handler
 void TIM3_IRQHandler(void)
 {
 	if(TIM3->SR & TIM_SR_UIF)
